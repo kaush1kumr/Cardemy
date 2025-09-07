@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardemy - Your Learning Buddy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <div class="chat-window">
+            <div class="initial-greeting-container">
+                <img src="https://via.placeholder.com/60/7b42f5/ffffff?text=C" alt="Cardemy Logo" class="app-logo">
+                <h1>Cardemy</h1>
+                <p>What do you want to learn today?</p>
+            </div>
+        </div>
+
+        <div class="mode-selector">
+            <label>
+                <input type="radio" name="learnMode" value="revision" checked>
+                Revision (5-10 cards)
+            </label>
+            <label>
+                <input type="radio" name="learnMode" value="learning">
+                Learning (15-30 cards)
+            </label>
+        </div>
+
+        <form class="input-area">
+            <input type="text" placeholder="Type any topic here..." id="user-input" autocomplete="off" />
+            <button type="submit">Send</button>
+        </form>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

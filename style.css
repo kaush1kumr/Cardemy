@@ -1,0 +1,232 @@
+/* --- Global & Layout Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.initial-greeting-container {
+    text-align: center;
+    padding: 40px;
+    color: #555;
+}
+
+.app-logo {
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+.input-area {
+    display: flex;
+    border-top: 1px solid #e0e0e0;
+    padding: 15px;
+}
+
+#user-input {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.input-area button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.input-area button:hover {
+    background-color: #0056b3;
+}
+
+/* --- Dynamic Chat Window Styles --- */
+.chat-window {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    overflow-y: auto;
+    height: 75vh;
+}
+
+/* Base style for simple text messages (user and thinking) */
+.chat-message {
+    padding: 10px 15px;
+    border-radius: 18px;
+    margin-bottom: 10px;
+    max-width: 75%;
+    line-height: 1.4;
+    word-wrap: break-word;
+}
+
+.user-message {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end; /* Pushes user bubble to the right */
+    border-bottom-right-radius: 4px;
+}
+
+.bot-thinking {
+    background-color: #e9ecef;
+    color: #555;
+    font-style: italic;
+    align-self: flex-start; /* Pushes bot bubble to the left */
+    border-bottom-left-radius: 4px;
+}
+
+/* --- FLASHCARD CAROUSEL STYLES (Final Version) --- */
+
+.card-carousel-container {
+    background-color: #f8f9fa; 
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 15px;
+    margin-bottom: 15px;
+    width: 95%; 
+    align-self: flex-start; /* Aligns the whole component to the left */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+/* The card itself, set for 3D flip */
+.carousel-card {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    perspective: 1000px; /* 3D effect */
+    min-height: 150px; 
+    cursor: pointer;
+}
+
+.carousel-card {
+    display: none; /* All cards are hidden by default */
+}
+.carousel-card.active-card {
+    display: block; /* Only the active card is shown */
+}
+
+/* This inner wrapper performs the flip animation */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.card-inner.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Front and Back faces of the card */
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    /* This rule hides the face by default */
+    visibility: hidden; 
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+/* These new rules explicitly show the correct face */
+.card-front.is-visible {
+    visibility: visible;
+}
+.card-back.is-visible {
+    visibility: visible;
+}
+
+.card-text {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.5;
+}
+
+/* Navigation bar (Prev/Next buttons, counter) */
+.carousel-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 15px;
+    margin-top: 10px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.carousel-nav button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.carousel-nav button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.card-counter {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+/* --- Mode Selector Styles --- */
+.mode-selector {
+    padding: 12px 15px;
+    border-top: 1px solid #e0e0e0;
+    text-align: center;
+    background-color: #fcfcfc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Adds spacing between the buttons */
+}
+
+.mode-selector label {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adds spacing between the radio button and text */
+}
+
+.mode-selector input[type="radio"] {
+    cursor: pointer;
+}
